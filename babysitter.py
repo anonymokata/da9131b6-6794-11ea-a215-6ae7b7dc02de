@@ -1,4 +1,4 @@
-def startTest(time):
+def timeTest(time):
 	time_split = time.split(':')
 	hour = int(time_split[0])
 	if hour not in range(13) or len(time_split[0]) > 2:
@@ -13,7 +13,7 @@ def startTest(time):
 	if hour == 12 and time_split[1][-2:] == 'am':
 		hour = 0
 	as_minutes = hour*60 + minute
-	if as_minutes < 17*60 and as_minutes > 4*60:
-		return False
-	else:
+	if as_minutes >= 17*60 or as_minutes <= 4*60:
 		return True
+	else:
+		return False

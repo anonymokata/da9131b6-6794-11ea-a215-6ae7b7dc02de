@@ -14,29 +14,27 @@ case_10 = ['8:38pm','7:26pm','A']
 
 class TestBabysitter(unittest.TestCase):
 
-	def test_startTest(self):
-		self.assertEqual(babysitter.startTest(case_1[0]), False)
-		self.assertEqual(babysitter.startTest(case_2[0]), True)
-		self.assertEqual(babysitter.startTest(case_3[0]), True)
-		self.assertEqual(babysitter.startTest(case_4[0]), False)
-		self.assertEqual(babysitter.startTest(case_5[0]), False)
-		self.assertEqual(babysitter.startTest(case_6[0]), False)
-		self.assertEqual(babysitter.startTest(case_7[0]), False)
-		self.assertEqual(babysitter.startTest(case_8[0]), False)
-		self.assertEqual(babysitter.startTest(case_9[0]), True)
-		self.assertEqual(babysitter.startTest(case_10[0]), True)
-
-	def test_endTest(self):
-		self.assertEqual(babysitter.endTest(case_1[1]), True)
-		self.assertEqual(babysitter.endTest(case_2[1]), True)
-		self.assertEqual(babysitter.endTest(case_3[1]), False)
-		self.assertEqual(babysitter.endTest(case_4[1]), True)
-		self.assertEqual(babysitter.endTest(case_5[1]), True)
-		self.assertEqual(babysitter.endTest(case_6[1]), False)
-		self.assertEqual(babysitter.endTest(case_7[1]), False)
-		self.assertEqual(babysitter.endTest(case_8[1]), False)
-		self.assertEqual(babysitter.endTest(case_9[1]), True)
-		self.assertEqual(babysitter.endTest(case_10[1]), True)
+	def test_timeTest(self):
+		self.assertEqual(babysitter.timeTest(case_1[0]), False)
+		self.assertEqual(babysitter.timeTest(case_2[0]), True)
+		self.assertEqual(babysitter.timeTest(case_3[0]), True)
+		self.assertEqual(babysitter.timeTest(case_4[0]), False)
+		self.assertEqual(babysitter.timeTest(case_5[0]), False)
+		self.assertEqual(babysitter.timeTest(case_6[0]), False)
+		self.assertEqual(babysitter.timeTest(case_7[0]), False)
+		self.assertEqual(babysitter.timeTest(case_8[0]), False)
+		self.assertEqual(babysitter.timeTest(case_9[0]), True)
+		self.assertEqual(babysitter.timeTest(case_10[0]), True)
+		self.assertEqual(babysitter.timeTest(case_1[1]), True)
+		self.assertEqual(babysitter.timeTest(case_2[1]), True)
+		self.assertEqual(babysitter.timeTest(case_3[1]), False)
+		self.assertEqual(babysitter.timeTest(case_4[1]), True)
+		self.assertEqual(babysitter.timeTest(case_5[1]), False)
+		self.assertEqual(babysitter.timeTest(case_6[1]), False)
+		self.assertEqual(babysitter.timeTest(case_7[1]), False)
+		self.assertEqual(babysitter.timeTest(case_8[1]), False)
+		self.assertEqual(babysitter.timeTest(case_9[1]), True)
+		self.assertEqual(babysitter.timeTest(case_10[1]), True)
 
 
 
