@@ -17,3 +17,29 @@ def timeTest(time):
 		return True
 	else:
 		return False
+
+def relativeTimeTest(startTime,endTime): #assumes times given between 5pm and 4am
+	startTime_split = startTime.split(':')
+	start_hour = int(startTime_split[0])
+	start_minute = int(startTime_split[1][0:-2])
+	endTime_split = endTime.split(':')
+	end_hour = int(endTime_split[0])
+	end_minute = int(endTime_split[1][0:-2])
+	if startTime_split[1][-2:] == 'pm' and start_hour != 12:
+		start_hour += 12
+	if start_hour == 12 and startTime_split[1][-2:] == 'am':
+		start_hour = 0
+	if endTime_split[1][-2:] == 'pm' and end_hour != 12:
+		end_hour += 12
+	if end_hour == 12 and endTime_split[1][-2:] == 'am':
+		end_hour = 0
+	startTime_as_minutes = start_hour*60 + start_minute
+	endTime_as_minutes = end_hour*60 + end_minute
+	if startTime_as_minutes <= 4*60:
+		startTime_as_minutes += 24*60
+	if endTime_as_minutes <= 4*60:
+		endTime_as_minutes += 24*60
+	if endTime_as_minutes >= startTime_as_minutes:
+		return True
+	else:
+		return False
