@@ -30,9 +30,11 @@ def relativeTimeTest(startTime,endTime): #returns False if endTime is prior to s
 		return False
 
 def timeInMinutes(time): #returns given time in minutes; returns False if input is incorrectly formatted
+	if ":" not in time:
+		return False
 	time_split = time.split(':')
 	hour = int(time_split[0])
-	if hour not in range(1,13) or len(time_split[0]) > 2:
+	if (hour not in range(1,13)) and (2 >= len(time_split[0]) >= 1):
 		return False 
 	minute = int(time_split[1][0:-2])
 	if minute not in range(60) or len(time_split[1][0:-2]) != 2:

@@ -24,6 +24,7 @@ class TestBabysitter(unittest.TestCase):
 		self.assertEqual(babysitter.timeTest('1:59om'), False)
 		self.assertEqual(babysitter.timeTest('6:28pm'), True)
 		self.assertEqual(babysitter.timeTest('7:26pm'), True)
+		self.assertEqual(babysitter.timeTest('a'), False)
 
 	def test_timeInMinutes(self):
 		self.assertEqual(babysitter.timeInMinutes('4:59pm'), 1019)
@@ -92,6 +93,9 @@ class TestBabysitter(unittest.TestCase):
 		self.assertEqual(babysitter.output('1:23am','0:22am','C'), False)
 		self.assertEqual(babysitter.output('4:00am','6:22am','C'), False)
 		self.assertEqual(babysitter.output('5:00pm','5:00am','C'), False)
+		self.assertEqual(babysitter.output('4:00am','6:22am',''), False)
+		self.assertEqual(babysitter.output('','5:00am','C'), False)
+		self.assertEqual(babysitter.output('2am','4:00am','C'), False)
 
 if __name__ == '__main__':
 	unittest.main()
