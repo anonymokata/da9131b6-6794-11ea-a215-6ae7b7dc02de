@@ -35,3 +35,58 @@ def timeInMinutes(time): #returns given time in minutes; returns False if input 
 	if hour == 12 and time_split[1][-2:] == 'am':
 		hour = 0
 	return (hour*60 + minute)
+
+def amountPaid(startTime,endTime,family): #returns amount paid as string; only paid for full hours
+	start_time_minutes = timeInMinutes(startTime)
+	end_time_minutes = timeInMinutes(endTime)
+	if start_time_minutes <= 4*60:
+		start_time_minutes += 24*60
+	if end_time_minutes <= 4*60:
+		end_time_minutes += 24*60
+	hours_worked = (end_time_minutes - start_time_minutes) // 60
+	amount_paid = 0
+	if family == 'A':
+		while start_time_minutes < 22*60:
+			if hours_worked >= 1:
+				start_time_minutes += 60
+				hours_worked -= 1
+				amount_paid += 15
+			else:
+				return '$' + str(amount_paid)
+		while hours_worked >= 1:
+			hours_worked -= 1
+			amount_paid += 20
+		return '$' + str(amount_paid)
+	elif family == 'B':
+		while start_time_minutes < 21*60:
+			if hours_worked >= 1:
+				start_time_minutes += 60
+				hours_worked -= 1
+				amount_paid += 12
+			else:
+				return '$' + str(amount_paid)
+		while start_time_minutes <= 23*60:
+			if hours_worked >= 1:
+				start_time_minutes += 60
+				hours_worked -= 1
+				amount_paid += 8
+			else:
+				return '$' + str(amount_paid)
+		while hours_worked >= 1:
+			hours_worked -= 1
+			amount_paid += 16
+		return '$' + str(amount_paid)
+	elif family == 'C':
+		while start_time_minutes < 20*60:
+			if hours_worked >= 1:
+				start_time_minutes += 60
+				hours_worked -= 1
+				amount_paid += 21
+			else:
+				return '$' + str(amount_paid)
+		while hours_worked >= 1:
+			hours_worked -= 1
+			amount_paid += 15
+		return '$' + str(amount_paid)
+	else:
+		return False
