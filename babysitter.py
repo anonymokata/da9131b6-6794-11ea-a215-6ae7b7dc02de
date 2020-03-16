@@ -1,3 +1,12 @@
+def output(startTime,endTime,family):
+	if (timeTest(startTime) and timeTest(endTime) and relativeTimeTest(startTime,endTime)) == False:
+		return False
+	else:
+		amount_paid = amountPaid(startTime,endTime,family)
+		if amount_paid == False:
+			return False
+		return ('Amount Paid: ' + amount_paid)
+
 def timeTest(time): #returns True when time is between 5pm and 4am; otherwise False
 	in_minutes = timeInMinutes(time)
 	if in_minutes is not False:
@@ -23,7 +32,7 @@ def relativeTimeTest(startTime,endTime): #returns False if endTime is prior to s
 def timeInMinutes(time): #returns given time in minutes; returns False if input is incorrectly formatted
 	time_split = time.split(':')
 	hour = int(time_split[0])
-	if hour not in range(13) or len(time_split[0]) > 2:
+	if hour not in range(1,13) or len(time_split[0]) > 2:
 		return False 
 	minute = int(time_split[1][0:-2])
 	if minute not in range(60) or len(time_split[1][0:-2]) != 2:
