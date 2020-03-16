@@ -101,3 +101,39 @@ def amountPaid(startTime,endTime,family): #returns amount paid as string; only p
 		return '$' + str(amount_paid)
 	else:
 		return False
+
+def main():
+	startTime = '1:00pm'
+	endTime = '12:00pm'
+	family = 'D'
+	repeat = ''
+	print('Hi, Babysitter')
+	while not relativeTimeTest(startTime,endTime):
+		startTime = '1:00pm'
+		endTime = '12:00pm'
+		while not timeTest(startTime):
+			startTime = input('What time did you begin work? ')
+			if not timeTest(startTime):
+				print('Invalid Time: Enter a time between "5:00pm" and "4:00am"\n')
+		while not timeTest(endTime):
+			endTime = input('What time did you finish work? ')
+			if not timeTest(endTime):
+				print('Invalid Time: Enter a time between "5:00pm" and "4:00am"\n')
+		if not relativeTimeTest(startTime,endTime):
+			print('Invalid Start/End Relationship: Start time must precede end time\n')
+	while not output(startTime,endTime,family):
+		family = input('Which family did you work for? ')
+		if not output(startTime,endTime,family):
+			print('Invalid Family: Enter "A" "B" or "C"\n')
+	print(output(startTime,endTime,family) + '\n')	
+	while repeat != "yes" or "no":
+		repeat = input('Begin another entry? ')
+		if repeat == "yes":
+			print()
+			main()
+		elif repeat == "no":
+			print('Have a nice day!\n')
+			break
+		else:
+			print('Invalid Response: Enter "yes" or "no"\n')
+main()
