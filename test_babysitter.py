@@ -53,5 +53,19 @@ class TestBabysitter(unittest.TestCase):
 		self.assertEqual(babysitter.relativeTimeTest('1:23am','2:22am'), True)
 		self.assertEqual(babysitter.relativeTimeTest('7:22pm','5:10pm'), False)
 
+	def test_amountPaid(self):
+		self.assertEqual(babysitter.relativeTimeTest('5:00pm','4:00am','A'), '$195')
+		self.assertEqual(babysitter.relativeTimeTest('5:00pm','4:00am','B'), '$136')
+		self.assertEqual(babysitter.relativeTimeTest('5:00pm','4:00am','C'), '$183')
+		self.assertEqual(babysitter.relativeTimeTest('11:02pm','12:51am','A'), '$20')
+		self.assertEqual(babysitter.relativeTimeTest('11:02pm','12:51am','B'), '$16')
+		self.assertEqual(babysitter.relativeTimeTest('11:02pm','12:51am','C'), '$15')
+		self.assertEqual(babysitter.relativeTimeTest('6:03pm','7:03pm','A'), '$15')
+		self.assertEqual(babysitter.relativeTimeTest('6:03pm','7:03pm','B'), '$12')
+		self.assertEqual(babysitter.relativeTimeTest('6:03pm','7:03pm','C'), '$21')
+		self.assertEqual(babysitter.relativeTimeTest('1:23am','2:22am','A'), '$0')
+		self.assertEqual(babysitter.relativeTimeTest('1:23am','2:22am','B'), '$0')
+		self.assertEqual(babysitter.relativeTimeTest('1:23am','2:22am','C'), '$0')
+
 if __name__ == '__main__':
 	unittest.main()
